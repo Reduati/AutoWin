@@ -67,12 +67,14 @@ namespace AutoWin {
                     string AttackFlowTemp;
 
                     AttackFlowTemp = File.ReadAllText(AttackFlowPath);
+                    
                     ParsedAttackFlowTechniques = JsonSerializer.Deserialize<JSONParseAttack>(AttackFlowTemp);
-
+                    Console.WriteLine(ParsedAttackFlowTechniques.Campaign);
                     foreach (var tech in ParsedAttackFlowTechniques.Techniques.Values) {
 
+                        Console.WriteLine(tech.Technique);
                         //executor(ParsedAttackFlowTechniques.Campaign, ParsedAttackFlowTechniques.Datetime, tech.Method, tech.Parameters)
-
+                        //Console.WriteLine(tech.Technique.);
                         //loop through all of the parameters, if we need it.
                         //string[] TempParams = new string[tech.Parameters.Count()];
                         //for (int i = 0; i < tech.Parameters.Count(); i++)
