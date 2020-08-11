@@ -1,0 +1,29 @@
+{
+	"campaign": "Simulação APT 1337",
+	"datetime": "2020-07-30 08:28:13",
+	"techniques": {
+		"1": {
+			"technique": "T1032-007",
+			"parameters": [
+				"https://www.evil.corp/evil.js",
+				"whatever"
+			]
+		},
+
+		"2": {
+			"technique": "T1032-002",
+			"parameters": [
+				"https://www.evil.corp/evil.js",
+				"whatever"
+			]
+		},
+
+		"3": {
+			"technique": "T1032-009",
+			"parameters": [
+				"https://www.evil.corp/evil.js",
+				"whatever"
+			]
+		}
+	}
+}
