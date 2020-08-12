@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
     public class Program {
         public static void Main(string[] args) {
-            Console.WriteLine("Hello from inside the technique 2!");
+            Console.WriteLine(args[0]);
+            Console.WriteLine("Hello from inside the technique 3!");
         }
     }
 

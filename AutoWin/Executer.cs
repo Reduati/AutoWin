@@ -8,31 +8,30 @@ using System.Threading.Tasks;
 namespace AutoWin {
     class Executer {
 
-		public static bool Start(string technique) {
-			
+		public static bool Start(Program.AttackFlowTechnique techniqueData) {
+
+			string technique = techniqueData.Technique;
 			try {
 				var technique_path = Program.project_path + technique + ".exe";
 				if (File.Exists(technique_path)) {
 					var bytes = File.ReadAllBytes(technique_path);
-					Console.WriteLine("Executing: " + technique);
-					Inject(bytes);
-					Console.WriteLine(technique);
+					Inject(bytes, techniqueData.Parameters);
 				} else {
-					Console.WriteLine("Cand find technique binary for (" + technique_path + ")" + technique);
+					Utils.echo("Cand find technique binary for " + technique, "alert");
 				}
 			} catch (Exception ex) {
-				Console.WriteLine("Error during executer start: " + ex.Message);
+				Utils.echo("Error during executer start: " + ex.Message,"alert");
 			}
 			
 			return false;
         }
-		public static bool Inject(byte[] bytes) {
+		public static bool Inject(byte[] bytes, string[] techniqueParams) {
 
 			try {
 				var assembly = System.Reflection.Assembly.Load(bytes);
 				foreach (var type in assembly.GetTypes()) {
 					object instance = Activator.CreateInstance(type);
-					object[] args = new object[] { new string[] { "" } };
+					object[] args = new object[] { techniqueParams };
 					try {
 						type.GetMethod("Main").Invoke(instance, args);
 					} catch (Exception ex) {

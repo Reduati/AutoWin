@@ -11,9 +11,9 @@
 		},
 
 		"2": {
-			"Technique": "T1032-002",
+			"Technique": "R100",
 			"Parameters": [
-				"https://www.evil.corp/evil.js",
+				"XPTO",
 				"whatever"
 			]
 		},

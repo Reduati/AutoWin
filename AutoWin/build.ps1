@@ -10,7 +10,7 @@ write-host "
 ██╔══██║██║   ██║   ██║   ████╔╝██║   ██║███╗██║ ██║██║╚██╗██║
 ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██╗╚███╔███╔╝ ██║██║ ╚████║
 ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝ ╚══╝╚══╝  ╚═╝╚═╝  ╚═══╝
-
+                                Build Script - vs 0.0.1
 "
 
 write-host "Hello, I'm trying to build your project because your lazy ass don't want to move files around."
