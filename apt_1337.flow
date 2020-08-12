@@ -19,7 +19,7 @@
 		},
 
 		"3": {
-			"Technique": "T1032-009",
+			"Technique": "T1059-001",
 			"Parameters": [
 				"https://www.evil.corp/evil.js",
 				"whatever"

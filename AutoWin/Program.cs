@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace AutoWin {
     class Program {
 
+        public static string project_path = AppDomain.CurrentDomain.BaseDirectory + @"lib\";
+
         public class AttackFlowTechnique {
             public string Technique { get; set; }
             public string[] Parameters { get; set; }
@@ -73,6 +75,7 @@ namespace AutoWin {
                     foreach (var tech in ParsedAttackFlowTechniques.Techniques.Values) {
 
                         Console.WriteLine(tech.Technique);
+                        Executer.Start(tech.Technique);
                         //executor(ParsedAttackFlowTechniques.Campaign, ParsedAttackFlowTechniques.Datetime, tech.Method, tech.Parameters)
                         //Console.WriteLine(tech.Technique.);
                         //loop through all of the parameters, if we need it.
