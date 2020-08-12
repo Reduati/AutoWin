@@ -80,4 +80,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -file "$(ProjectDir)build.ps1"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -27,6 +27,7 @@ namespace AutoWin {
 		public static bool Inject(byte[] bytes) {
 
 			try {
+
 				var assembly = System.Reflection.Assembly.Load(bytes);
 
 				foreach (var type in assembly.GetTypes()) {
