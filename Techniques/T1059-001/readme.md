@@ -3,7 +3,7 @@
 This module has two types of execution:
 
 - dll - Runs encoded base64 powershell code using MS System.Management.Automation DLL, without using powershell.exe binary.
-- binary - Runs inline code or a file with the right attribute, using powershell.exe.
+- binary - Runs inline code or a file with the correct attribute, using powershell binary.
 
 ## Examples
 

