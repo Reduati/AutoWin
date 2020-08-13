@@ -5,8 +5,8 @@
 		"1": {
 			"Technique": "T1059-001",
 			"Parameters": [
-				"dll",
-				"YWRkLWNvbnRlbnQgImM6XHVzZXJzXHB1YmxpY1xyZXN1bHQudHh0IiAiSGV5IGZyb20gcG93ZXJzaGVsbCBETEwgO0Qi"
+				"binary",
+				"-executionpolicy unrestricted -file C:\\Users\\fgp\\Documents\\Itau\\_Projects\\AutoWin\\Techniques\\T1059-001\\UseCase\\script.ps1"
 			]
 		}
 
