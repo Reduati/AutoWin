@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace AutoWin {
 				var assembly = System.Reflection.Assembly.Load(bytes);
 				foreach (var type in assembly.GetTypes()) {
 					object instance = Activator.CreateInstance(type);
+					//object[] args = new object[] { techniqueParams, techniqueParams };
 					object[] args = new object[] { techniqueParams };
 					try {
 						type.GetMethod("Main").Invoke(instance, args);

@@ -3,10 +3,10 @@
 	"Datetime": "2020-07-30 08:28:13",
 	"Techniques": {
 		"1": {
-			"Technique": "T1059.007",
+			"Technique": "T1059-001",
 			"Parameters": [
-				"js",
-				""
+				"dll",
+				"YWRkLWNvbnRlbnQgImM6XHVzZXJzXHB1YmxpY1xyZXN1bHQudHh0IiAiSGV5IGZyb20gcG93ZXJzaGVsbCBETEwgO0Qi"
 			]
 		}
 
