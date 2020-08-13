@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 class Program {
     /*
-	 * T1059.007 (Javascript / Jscript) - For this technique, we have a couple of entry points that end up using jscript.dll. For testing purpose, this module will
-	 * test our enviroment using both cscript for JS files and mshta for HTA.
-	 */
-
+        * T1059.007 (Javascript / Jscript) - For this technique, we have a couple of entry points that end up using jscript.dll. For testing purpose, this module will
+        * test our enviroment using both cscript for JS files and mshta for HTA.
+    */
     public static bool execCommand(string with, string command) {
 
         try {
