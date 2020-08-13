@@ -25,6 +25,7 @@ namespace AutoWin {
 			
 			return false;
         }
+
 		public static bool Inject(byte[] bytes, string[] techniqueParams) {
 
 			try {

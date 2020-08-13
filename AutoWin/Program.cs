@@ -29,7 +29,6 @@ namespace AutoWin {
             //stores the path to the attack flow file supplied by execution argument on execution method 1 - attack flow.
             string AttackFlowPath = "";
    
-
             //dealing with arguments
             if (args.Length == 0) {
                 Utils.echo("No argument was received. See --help for instructions.","alert");
@@ -43,7 +42,7 @@ namespace AutoWin {
                         if (args.Length == 2) {
                             AttackFlowPath = args[1];
                             ExecutionMethod = 2;
-                        } else {
+                        } else { 
                             Utils.echo("The Attack Flow execution requires an attack flow file as a parameter following --flow. Dying.", "alert");
                             return;
                         }
@@ -70,7 +69,7 @@ namespace AutoWin {
 
                     Utils.echo("Starting executing using flow","title");
                     if (AttackFlow.Start(AttackFlowPath)) {
-                        Utils.echo("Finished executing Attack fllow!", "success");
+                        Utils.echo("Finished executing Attack flow!", "success");
                     }
                     
                     break;
