@@ -14,7 +14,7 @@ You can find the demo files on the example folder inside this technique project.
     "Technique": "T1059-007",
     "Parameters": [
     "hta",
-    "c:\examples\demo.hta"
+    "c:\\examples\\demo.hta"
     ]
 		}
 ```
@@ -24,7 +24,7 @@ You can find the demo files on the example folder inside this technique project.
     "Technique": "T1059-007",
     "Parameters": [
         "script",
-        "c:\examples\demo.js"
+        "c:\\examples\\demo.js"
     ]
 }
 ```
