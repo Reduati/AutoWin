@@ -2,6 +2,8 @@
 $techniques_folder = "../../../Techniques/"
 $lib_folder = $PSScriptRoot + "\bin\debug\lib\"
 
+New-Item -ItemType "directory" -Path $lib_folder 
+
 write-host "
 
  █████╗ ██╗   ██╗████████╗ ██████╗    ██╗    ██╗ ██╗███╗   ██╗

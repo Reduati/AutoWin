@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 class Technique {
 
     public static Dictionary<string, string> EntryData { get; set; }
-	public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+	public static Dictionary<string, string> ExitData { get; set; }
 
     public static void Main(string[] args) {
         try {

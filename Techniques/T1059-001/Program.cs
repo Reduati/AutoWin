@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 public class Technique {
 
     public static Dictionary<string, string> EntryData { get; set; }
-    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+    public static Dictionary<string, string> ExitData { get; set; }
 
     public static bool execCommand(string with, string command) {
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 class Technique {
 
     public static Dictionary<string, string> EntryData { get; set; }
-    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+    public static Dictionary<string, string> ExitData { get; set; } 
 
     /*
         * T1059.007 (Javascript / Jscript) - For this technique, we have a couple of entry points that end up using jscript.dll. For testing purpose, this module will
