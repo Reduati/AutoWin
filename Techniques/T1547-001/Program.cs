@@ -20,12 +20,13 @@ class Technique {
 
 		try {
 
-			if(args[0] == "startup") {
+			Console.WriteLine("[T1547-001] Starting technique!");
 
-				Console.WriteLine("Will be adding file to: " + Environment.GetFolderPath(Environment.SpecialFolder.Startup));
+			if (args[0] == "startup") {
+				
 				try {
+			
 					string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\" + payloadName + ".bat";
-					Console.WriteLine(fileName);
 					FileInfo fi = new FileInfo(fileName);
 
 					if (fi.Exists) {
@@ -36,12 +37,8 @@ class Technique {
 						sw.WriteLine(args[1]);
 					}
 
-					using (StreamReader sr = File.OpenText(fileName)) {
-						string s = "";
-						while ((s = sr.ReadLine()) != null) {
-							Console.WriteLine(s);
-						}
-					}
+					Console.WriteLine("[T1547-001] Succesfully wrote BAT file to " + fileName);
+					returnCode = "0";
 				}
 				catch (Exception Ex) {
 					Console.WriteLine(Ex.ToString());
