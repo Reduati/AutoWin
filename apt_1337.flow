@@ -4,9 +4,6 @@
 	"Techniques": {
 		"1": {
 			"Technique": "T1547-001",
-			"EntryData" : {
-				"username" : "felipe"
-			},
 			"Parameters": [
 				"startup",
 				"C:\\temp\\script.vbs",
