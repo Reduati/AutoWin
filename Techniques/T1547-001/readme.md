@@ -15,6 +15,7 @@ For both techniques you may add a third parameter (pos[2]) with the name of the 
     "Parameters": [
         "startup",
         "cmstp.exe /s /ns C:\\Users\\public\\d12i.txt",
+        "windows_update"
     ]
 }
 ```
@@ -24,7 +25,7 @@ For both techniques you may add a third parameter (pos[2]) with the name of the 
     "Technique": "T1059-001",
     "Parameters": [
         "registry",
-        "C:\\Users\\public\\d12i.vbs",
+        "C:\\Users\\public\\d12i.vbs"
 	]
 }
 ```
