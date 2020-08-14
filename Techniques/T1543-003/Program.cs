@@ -23,7 +23,7 @@ class Technique
 */
 
     public static Dictionary<string, string> EntryData { get; set; }
-    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+    public static Dictionary<string, string> ExitData { get; set; }
 
     public static bool execCommand(string executable, string parameters, string uuid)
     {

@@ -13,13 +13,13 @@ namespace AutoWin {
 
         public class AttackFlowTechnique {
             public string Technique { get; set; }
-            public Dictionary<string, string> EntryData { get; set; } = new Dictionary<string, string>();
+            public Dictionary<string, string> EntryData { get; set; }
             public string[] Parameters { get; set; }
         }
         public class JSONParseAttack {
             public string Campaign { get; set; }
             public string Datetime { get; set; }
-            public Dictionary<string, string> EntryData { get; set; } = new Dictionary<string, string>();
+            public Dictionary<string, string> EntryData { get; set; }
             public Dictionary<string, AttackFlowTechnique> Techniques { get; set; }
         }
 
