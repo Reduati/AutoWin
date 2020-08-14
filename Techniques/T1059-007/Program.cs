@@ -6,7 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class Program {
+class Technique {
+
+    public static Dictionary<string, string> EntryData { get; set; }
+    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+
     /*
         * T1059.007 (Javascript / Jscript) - For this technique, we have a couple of entry points that end up using jscript.dll. For testing purpose, this module will
         * test our enviroment using both cscript for JS files and mshta for HTA.

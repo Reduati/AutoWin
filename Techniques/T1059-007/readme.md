@@ -16,7 +16,7 @@ You can find the demo files on the example folder inside this technique project.
     "hta",
     "c:\\examples\\demo.hta"
     ]
-		}
+}
 ```
 
 ```json

@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Program {
+class Technique {
+
+    public static Dictionary<string, string> EntryData { get; set; }
+	public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+
     public static void Main(string[] args) {
         try {
             System.Diagnostics.Process process = new System.Diagnostics.Process();

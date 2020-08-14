@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,9 @@ namespace AutoWin {
 				var technique_path = Program.project_path + technique + ".exe";
 				if (File.Exists(technique_path)) {
 					var bytes = File.ReadAllBytes(technique_path);
-					Inject(bytes, techniqueData.Parameters);
+					if(Inject(bytes, techniqueData.Parameters)) {
+						return true;
+					}
 				} else {
 					Utils.echo("Cand find technique binary for " + technique, "alert");
 				}
@@ -29,18 +32,29 @@ namespace AutoWin {
 
 		public static bool Inject(byte[] bytes, string[] techniqueParams) {
 
+			
 			try {
+
+				string returnMessage = null;
+				string returnCode = null;
+
 				var assembly = System.Reflection.Assembly.Load(bytes);
-				foreach (var type in assembly.GetTypes()) {
-					object instance = Activator.CreateInstance(type);
-					//object[] args = new object[] { techniqueParams, techniqueParams };
-					object[] args = new object[] { techniqueParams };
-					try {
-						type.GetMethod("Main").Invoke(instance, args);
-					} catch (Exception ex) {
-						Console.WriteLine("Error during injection: " + ex.Message); 
-					}
-				}
+				Type t = assembly.GetType("Technique");
+				object o = Activator.CreateInstance(t);
+				object[] args = new object[] { techniqueParams };
+				PropertyInfo entryDataRef = o.GetType().GetProperty("EntryData");
+				entryDataRef.SetValue(o, Program.EntryData);
+				t.GetMethod("Main").Invoke(o, args);
+				PropertyInfo exitDataRef = o.GetType().GetProperty("ExitData");
+				Dictionary<string, string> ExitData = (Dictionary<string, string>)exitDataRef.GetValue(o);
+				
+				try {
+					returnMessage = ExitData["returnmessage"];
+					returnCode = ExitData["returncode"];
+				} catch { }
+
+				Utils.echo("[DEBUG] Return Code:" + returnCode + " Return Message:" + returnMessage);
+
 				return true;
 			} catch (Exception ex) {
 				Console.WriteLine("error injecting code:" + ex.Message);

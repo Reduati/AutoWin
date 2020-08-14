@@ -7,7 +7,11 @@ using System.Management.Automation.Runspaces;
 using System.Runtime.InteropServices;
 
 
-public class Program {
+public class Technique {
+
+    public static Dictionary<string, string> EntryData { get; set; }
+    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+
     public static bool execCommand(string with, string command) {
 
         try {

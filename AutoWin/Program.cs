@@ -9,20 +9,26 @@ namespace AutoWin {
     class Program {
 
         public static string project_path = AppDomain.CurrentDomain.BaseDirectory + @"lib\";
+        public static Dictionary<string, string> EntryData = new Dictionary<string, string>();
 
         public class AttackFlowTechnique {
             public string Technique { get; set; }
+            public Dictionary<string, string> EntryData { get; set; } = new Dictionary<string, string>();
             public string[] Parameters { get; set; }
         }
         public class JSONParseAttack {
             public string Campaign { get; set; }
             public string Datetime { get; set; }
+            public Dictionary<string, string> EntryData { get; set; } = new Dictionary<string, string>();
             public Dictionary<string, AttackFlowTechnique> Techniques { get; set; }
         }
 
         static void Main(string[] args) {
 
             Utils.echoBanner();
+
+            //define information that will be shared with techniques during execution time
+            EntryData["workfolder"] = @"c:\users\public\"; // default path
 
             //stores the execution method supplied on the arguments during execution. 0 is full, 1 is flow and 2 is debug.
             int ExecutionMethod;

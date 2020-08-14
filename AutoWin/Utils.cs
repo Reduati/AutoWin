@@ -25,7 +25,7 @@ namespace AutoWin {
 			switch (type) {
 				case "info":
 					box = "[*]";
-					Console.ForegroundColor = ConsoleColor.Gray;
+					Console.ForegroundColor = ConsoleColor.Cyan;
 					break;
 				case "alert":
 					box = "[!]";
