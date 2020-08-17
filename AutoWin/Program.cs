@@ -28,7 +28,7 @@ namespace AutoWin {
             Utils.echoBanner();
 
             //define information that will be shared with techniques during execution time
-            EntryData["workfolder"] = @"c:\users\public\"; // default path
+            EntryData["Workfolder"] = @"c:\users\public\"; // default path
 
             //stores the execution method supplied on the arguments during execution. 0 is full, 1 is flow and 2 is debug.
             int ExecutionMethod;
