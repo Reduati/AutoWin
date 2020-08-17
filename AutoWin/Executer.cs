@@ -49,11 +49,15 @@ namespace AutoWin {
 				Dictionary<string, string> ExitData = (Dictionary<string, string>)exitDataRef.GetValue(o);
 				
 				try {
-					returnMessage = ExitData["returnmessage"];
-					returnCode = ExitData["returncode"];
-				} catch { }
+                    if (ExitData.ContainsKey("returnmessage") || ExitData.ContainsKey("returncode")) {
+						returnMessage = ExitData["returnmessage"];
+						returnCode = ExitData["returncode"];
 
-				Utils.echo("[DEBUG] Return Code:" + returnCode + " Return Message:" + returnMessage);
+						Utils.echo("[DEBUG] Return Code:" + returnCode + " Return Message:" + returnMessage);
+					}
+				} catch (Exception ex) {
+					Console.WriteLine("[ERROR] " + ex.Message);
+				}
 
 				return true;
 			} catch (Exception ex) {
