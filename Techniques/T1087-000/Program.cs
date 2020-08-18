@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 class Technique {
 
     public static Dictionary<string, string> EntryData { get; set; }
-    public static Dictionary<string, string> ExitData { get; set; } = new Dictionary<string, string>();
+    public static Dictionary<string, string> ExitData { get; set; }
 
     public static bool execDiscovery(string cmd, string user, string context) {
         System.Diagnostics.Process process = new System.Diagnostics.Process();

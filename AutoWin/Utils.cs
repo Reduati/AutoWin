@@ -8,17 +8,27 @@ using System.Threading.Tasks;
 namespace AutoWin {
 	class Utils {
 
+		private static Random _random = new Random();
+		private static ConsoleColor GetRandomConsoleColor() {
+			var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+			return (ConsoleColor)consoleColors.GetValue(_random.Next(consoleColors.Length));
+		}
+
+		public static void echoRandomColor(string line) {
+			Console.ForegroundColor = GetRandomConsoleColor();
+			Console.WriteLine(line);
+		}
+
 		public static void echoBanner() {
 
-			Console.Write( "\n" +
-				" █████╗ ██╗   ██╗████████╗ ██████╗    ██╗    ██╗ ██╗███╗   ██╗ \n" +
-				"██╔══██╗██║   ██║╚══██╔══╝██╔═████╗   ██║    ██║███║████╗  ██║ \n" +
-				"███████║██║   ██║   ██║   ██║██╔██║   ██║ █╗ ██║╚██║██╔██╗ ██║ \n" +
-				"██╔══██║██║   ██║   ██║   ████╔╝██║   ██║███╗██║ ██║██║╚██╗██║ \n" +
-				"██║  ██║╚██████╔╝   ██║   ╚██████╔╝██╗╚███╔███╔╝ ██║██║ ╚████║ \n" +
-				"╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝ ╚══╝╚══╝  ╚═╝╚═╝  ╚═══╝ \n" +
-				"                                       $Pwn vs 0.0.1 \n");
-
+			echoRandomColor("");
+			echoRandomColor(" █████╗ ██╗   ██╗████████╗ ██████╗    ██╗    ██╗ ██╗███╗   ██╗ ");
+			echoRandomColor("██╔══██╗██║   ██║╚══██╔══╝██╔═████╗   ██║    ██║███║████╗  ██║ ");
+			echoRandomColor("███████║██║   ██║   ██║   ██║██╔██║   ██║ █╗ ██║╚██║██╔██╗ ██║ ");
+			echoRandomColor("██╔══██║██║   ██║   ██║   ████╔╝██║   ██║███╗██║ ██║██║╚██╗██║ ");
+			echoRandomColor("██║  ██║╚██████╔╝   ██║   ╚██████╔╝██╗╚███╔███╔╝ ██║██║ ╚████║ ");
+			echoRandomColor("╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝ ╚══╝╚══╝  ╚═╝╚═╝  ╚═══╝ ");
+			echoRandomColor("                                                $Pwn vs 0.0.1  ");
 		}
 		public static void echo(string line, string type = "info") {
 			string box = "";
