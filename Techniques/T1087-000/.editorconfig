@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none
+
+# IDE0047: Remove unnecessary parentheses
+dotnet_diagnostic.IDE0047.severity = none
+
+# IDE0075: Simplify conditional expression
+dotnet_style_prefer_simplified_boolean_expressions = false:suggestion
