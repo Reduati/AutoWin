@@ -10,8 +10,9 @@ namespace AutoWin {
 
 		private static Random _random = new Random();
 		private static ConsoleColor GetRandomConsoleColor() {
+			int[] allowed = {15,7,10,2,3,11};
 			var consoleColors = Enum.GetValues(typeof(ConsoleColor));
-			return (ConsoleColor)consoleColors.GetValue(_random.Next(consoleColors.Length));
+			return (ConsoleColor)consoleColors.GetValue(allowed[_random.Next(allowed.Length)]);
 		}
 
 		public static void echoRandomColor(string line) {
