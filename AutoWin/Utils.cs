@@ -4,6 +4,14 @@ namespace AutoWin {
 	class Utils {
 
 		private static Random _random = new Random();
+
+		public static string readError(string message) {
+			switch(message) {
+				case "Object reference not set to an instance of an object":
+					return "Check if the Main() function is public!";
+			}
+			return message;
+		}
 		private static ConsoleColor GetRandomConsoleColor() {
 			int[] allowed = {15,7,10,2,3,11};
 			var consoleColors = Enum.GetValues(typeof(ConsoleColor));

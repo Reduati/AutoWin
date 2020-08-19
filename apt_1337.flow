@@ -4,12 +4,10 @@
 	"Techniques": {
 		"1": {
 			"Technique": "T1003-001",
-			"Parameters": [
-				"persistence",
-				"Test Task 1",
-				"calc.exe",
-				"minute"
+			"Parameters" : [
+				""
 			]
+			
 		}
 	}
 }

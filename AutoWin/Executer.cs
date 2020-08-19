@@ -73,10 +73,8 @@ namespace AutoWin {
 
 				return true;
 			} catch (Exception ex) {
-				Utils.echo("Error injecting code (" + ex.Message + ")","alert");
-				if(ex.Message == "Object reference not set to an instance of an object") {
-					Utils.echo("Check if the Main() function is public!", "alert");
-				}
+				Utils.echo( String.Format("Error injecting code ({0})", Utils.readError(ex.Message)), "alert");
+				
 			}
 			return false;
 		}

