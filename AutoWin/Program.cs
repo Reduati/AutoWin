@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace AutoWin {
             public Dictionary<string, AttackFlowTechnique> Techniques { get; set; }
         }
 
+        public static void readConfigFlags(string[] args) {
+
+            for(int k=1;k<=args.Length-1;k++) {
+
+                switch (args[k]) {
+                    case "--lib":
+                        string field = args[k + 1];
+                        Program.project_path = new Uri(field).LocalPath;
+                        break;
+                }
+            }
+            
+		}
+
         static void Main(string[] args) {
 
             Utils.echoBanner();
@@ -40,12 +55,13 @@ namespace AutoWin {
                 Utils.echo("No argument was received. See --help for instructions.","alert");
                 return;
             } else {
+
                 switch (args[0]) {
                     case "--full":
                         ExecutionMethod = 1;
                         break;
                     case "--flow":
-                        if (args.Length == 2) {
+                        if (args.Length > 2) {
                             AttackFlowPath = args[1];
                             ExecutionMethod = 2;
                         } else { 
@@ -63,6 +79,9 @@ namespace AutoWin {
                         Utils.echo("No valid argument was received. See --help for instructions.","alert");
                         return;
                 }
+
+                readConfigFlags(args);
+
             }
 
             switch (ExecutionMethod) {
