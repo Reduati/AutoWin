@@ -5,12 +5,6 @@
 		"1": {
 			"Technique": "T1003-001",
 			"Parameters": [
-				"C:\\Users\\public\\dump.file"
-			]
-		},
-		"2": {
-			"Technique": "T1053-005",
-			"Parameters": [
 				"persistence",
 				"Test Task 1",
 				"calc.exe",

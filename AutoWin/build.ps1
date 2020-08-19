@@ -8,11 +8,11 @@ function Compile-Project($slnfile) {
         $pinfo.RedirectStandardError = $true
         $pinfo.RedirectStandardOutput = $true
         $pinfo.UseShellExecute = $false
-        $pinfo.Arguments = $slnfile
+        $pinfo.Arguments = "$slnfile /t:Rebuild /p:WarningLevel=0"
         $p = New-Object System.Diagnostics.Process
         $p.StartInfo = $pinfo
         $p.Start() | Out-Null
-        $p.WaitForExit()
+        $p.WaitForExit(3)
         $stdout = $p.StandardOutput.ReadToEnd()
         $stderr = $p.StandardError.ReadToEnd()
         if($p.ExitCode -eq 0) {

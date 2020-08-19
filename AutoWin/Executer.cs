@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoWin {
     class Executer {
@@ -74,7 +73,10 @@ namespace AutoWin {
 
 				return true;
 			} catch (Exception ex) {
-				Console.WriteLine("error injecting code:" + ex.Message);
+				Utils.echo("Error injecting code (" + ex.Message + ")","alert");
+				if(ex.Message == "Object reference not set to an instance of an object") {
+					Utils.echo("Check if the Main() function is public!", "alert");
+				}
 			}
 			return false;
 		}
