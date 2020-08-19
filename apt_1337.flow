@@ -3,11 +3,9 @@
 	"Datetime": "2020-07-30 08:28:13",
 	"Techniques": {
 		"1": {
-			"Technique": "T1059-005",
+			"Technique": "T1003-001",
 			"Parameters": [
-				"C:\\Temp\\wget.vbs",
-				"https://miro.medium.com/max/500/1*fQOoU3iT33ZI3Jtf4SiufQ.png",
-				"C:\\Temp\\logo.png"
+				"C:\\Users\\public\\dump.file"
 			]
 		},
 		"2": {

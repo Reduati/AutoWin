@@ -63,7 +63,7 @@ namespace AutoWin {
                         ExecutionMethod = 1;
                         break;
                     case "--flow":
-                        if (args.Length > 2) {
+                        if (args.Length >= 2) {
                             AttackFlowPath = args[1];
                             ExecutionMethod = 2;
                         } else { 
