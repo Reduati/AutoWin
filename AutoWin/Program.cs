@@ -30,8 +30,10 @@ namespace AutoWin {
 
                 switch (args[k]) {
                     case "--lib":
-                        string field = args[k + 1];
-                        Program.project_path = new Uri(field).LocalPath;
+                        Program.project_path = new Uri(args[k + 1]).LocalPath;
+                        break;
+                    case "--workfolder":
+                        EntryData["Workfolder"] = new Uri(args[k + 1]).LocalPath;
                         break;
                 }
             }
