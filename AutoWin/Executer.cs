@@ -14,14 +14,27 @@ namespace AutoWin {
 
 			string technique = techniqueData.Technique;
 			try {
-				var technique_path = Program.project_path + technique + ".exe";
-				if (File.Exists(technique_path)) {
-					var bytes = File.ReadAllBytes(technique_path);
-					if(Inject(bytes, techniqueData.Parameters)) {
+
+				var technique_bin_path = Program.project_path + technique + ".exe";
+				var technique_module_path = Program.project_path + technique + ".m";
+
+				if (File.Exists(technique_bin_path) || File.Exists(technique_module_path)) {
+
+					byte[] bytes = null;
+
+					if (File.Exists(technique_bin_path)) {
+						bytes = File.ReadAllBytes(technique_bin_path);
+					} else {
+						var bytes_f = File.ReadAllText(technique_module_path);
+						bytes = Convert.FromBase64String(bytes_f);
+					}
+
+					if (Inject(bytes, techniqueData.Parameters)) {
 						return true;
 					}
+
 				} else {
-					Utils.echo("Cand find technique binary for " + technique, "alert");
+					Utils.echo("Cand find technique binary or module for " + technique, "alert");
 				}
 			} catch (Exception ex) {
 				Utils.echo("Error during executer start: " + ex.Message,"alert");
