@@ -3,9 +3,11 @@
 	"Datetime": "2020-07-30 08:28:13",
 	"Techniques": {
 		"1": {
-			"Technique": "T1003-001",
+			"Technique": "T1110-003",
 			"Parameters" : [
-				""
+				"local",
+				"users.txt",
+				"passwords.txt"
 			]
 			
 		}
