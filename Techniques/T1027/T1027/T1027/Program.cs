@@ -67,6 +67,7 @@ class Technique
         string exeMethod = "";
         string remotePath = "";
         string localPath = "";
+        string subTechnique = "";
 
         if (new[] { 1, 3 }.Contains(args.Length))
         {
@@ -84,6 +85,7 @@ class Technique
                         remotePath = args[1];
                         localPath = args[2];
                     }
+                    subTechnique = "001";
                     exeMethod = "Binary Padding";
                     break;
 
@@ -98,6 +100,7 @@ class Technique
                         remotePath = args[1];
                         localPath = args[2];
                     }
+                    subTechnique = "002";
                     exeMethod = "Software Packing";
                     break;
 
@@ -112,6 +115,7 @@ class Technique
                         remotePath = args[1];
                         localPath = args[2];
                     }
+                    subTechnique = "003";
                     exeMethod = "Steganography";
                     break;
 
@@ -126,26 +130,31 @@ class Technique
                         remotePath = args[1];
                         localPath = args[2];
                     }
+                    subTechnique = "005";
                     exeMethod = "Indicator Removal";
                     break;
+
+                default:
+                    Console.WriteLine("[T1027] Invalid execution method received. Returning without execution.");
+                    return;
             }
         }
         else
         {
-            Console.WriteLine("[T1027-002] Did not receive the expected parameters. Returning without execution.");
+            Console.WriteLine("[T1027] Did not receive the expected parameters. Returning without execution.");
             return;
         }
 
-        Console.WriteLine("[T1027-002] Starting Execution!");
+        Console.WriteLine("[T1027] Starting Execution!");
 
-        Console.WriteLine("[T1027-002] Dropping obfuscated file: executionMethod '" + exeMethod + "', remotePath '" + remotePath + "', localPath '" + localPath + "'");
+        Console.WriteLine("[T1027-" + subTechnique + "] Dropping obfuscated file: executionMethod '" + exeMethod + "', remotePath '" + remotePath + "', localPath '" + localPath + "'");
         if (execCommand(remotePath, localPath))
         {
-            Console.WriteLine("[T1027-002] Successfully executed Technique (return 0)! ");
+            Console.WriteLine("[T1027-" + subTechnique + "] Successfully executed Technique (return 0)! ");
         }
         else
         {
-            Console.WriteLine("[T1027-002] Oops, something went wrong! ");
+            Console.WriteLine("[T1027-" + subTechnique + "] Oops, something went wrong! ");
         }
     }
 }
