@@ -7,7 +7,7 @@ namespace AutoWin {
 
 		public static string readError(string message) {
 			switch(message) {
-				case "Object reference not set to an instance of an object":
+				case "Object reference not set to an instance of an object.":
 					return "Check if the Main() function is public!";
 			}
 			return message;

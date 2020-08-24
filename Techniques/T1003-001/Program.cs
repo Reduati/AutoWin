@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Channels;
 using System.Security.Principal;
 
 /*
@@ -131,6 +132,7 @@ class Technique {
             Console.WriteLine(String.Format("[T1003-001] [X] Dump directory \"{0}\" doesn't exist!\n", dumpDir));
             return;
         }
+
 
         Minidump(dumpDir);
 
