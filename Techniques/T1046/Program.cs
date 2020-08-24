@@ -11,6 +11,9 @@ class Technique {
 
     /*
      *  T1046 - Simple TCP Network Scan
+     *  This code has a mix of techniques taken from the references bellow;
+     *  https://stackoverflow.com/questions/17118632/how-to-set-the-timeout-for-a-tcpclient
+     *  https://www.dreamincode.net/forums/topic/339543-looping-through-a-range-if-ip-addresses/
      */
 
     public static Dictionary<string, string> EntryData { get; set; }
