@@ -32,7 +32,7 @@ namespace AutoWin {
 			echoRandomColor("██╔══██║██║   ██║   ██║   ████╔╝██║   ██║███╗██║ ██║██║╚██╗██║ ");
 			echoRandomColor("██║  ██║╚██████╔╝   ██║   ╚██████╔╝██╗╚███╔███╔╝ ██║██║ ╚████║ ");
 			echoRandomColor("╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝ ╚══╝╚══╝  ╚═╝╚═╝  ╚═══╝ ");
-			echoRandomColor("                                                $Pwn vs 0.0.1  ");
+			echoRandomColor("                                                $Pwn vs 0.0.2  ");
 		}
 		public static void echo(string line, string type = "info") {
 			string box = "";
