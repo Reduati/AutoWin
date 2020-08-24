@@ -9,7 +9,7 @@ namespace Technique
 
     /*
         * 
-        * T1036-004 (Masquerading: Masquerade Task or Service).
+        * T1036-004 (RDP).
         *
         * Possible Parameters:
         *   1 - target - Required
