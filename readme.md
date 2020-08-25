@@ -1,11 +1,31 @@
 # Aut0.W1n
 
+
 Autowin is a framework that helps organizations simulate specific attack scenarios in order to improve detection and response capabilities.
 
 Check out [all the techniques](https://github.com/Reduati/AutoWin/tree/master/Techniques) we developed. Each one has a readme file, so you can understand better what they done and how to create a scenario.
 ## Build
 
 Right now we are not releasing a builded version of this project, but you can easily build it yourself using Visual Studio.
+
+## Techniques
+
+This is a project in development and new techniques are developed every day. In this moment, you can use those bellow:
+
+| MID | Technique |
+| ----|----|
+|T1003.001|[OS Credential Dumping: LSASS Memory](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1003-001)|
+|T1037-001|[Boot or Logon Initialization Scripts: Logon Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1037-001)|
+|T1046|[Network Service Scanning](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1046)|
+|T1053-005|[Scheduled Tasks](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1053-005)|
+|T1059-001|[Powershell](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-001)|
+|T1059-003|[Command and Scripting Interpreter: Windows Command Shell](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-003)|
+|T1059-005|[Visual Basic Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-005)|
+|T1059-007|[Javascript/JScript](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-007)|
+|T1087-000|[Account Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1087-000)|
+|T1110.003|[Brute Force](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1110-003)|
+|T1543-003|[Create or Modify System Process: Windows Service](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1543-003)|
+|T1547-001|[Registry Run Keys / Startup Folder](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1547-001)|
 
 
 ## Usage

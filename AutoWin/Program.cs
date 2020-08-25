@@ -70,7 +70,7 @@ namespace AutoWin {
                             return;
                         }
                         break;
-                    case "--debug":
+                    case "--technique":
                         ExecutionMethod = 3;
                         break;
                     case "--help":

@@ -1,17 +1,16 @@
 {
-    "Campaign": "Example",
-    "Datetime": "2020-07-30 10:00",
+    "Campaign": "Simulação APT 1337",
+    "Datetime": "2020-07-30 08:28:13",
     "Techniques": {
         "1": {
+            "EntryData": {
+                "output":"TextContent.txt"
+            },
             "Technique": "T1087-000",
-	    "EntryData" : {
-		"output":"users.txt"
-	    },
-            "Parameters" : [
+            "Parameters": [
                 "net",
-		"local"
+                "local"
             ]
-           
         }
     }
 }
