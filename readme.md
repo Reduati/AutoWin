@@ -14,7 +14,7 @@ This is a project in development and new techniques are developed every day. In 
 
 | MID | Technique |
 | ----|----|
-|T1003.001|[OS Credential Dumping: LSASS Memory](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1003-001)|
+|T1003-001|[OS Credential Dumping: LSASS Memory](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1003-001)|
 |T1037-001|[Boot or Logon Initialization Scripts: Logon Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1037-001)|
 |T1046|[Network Service Scanning](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1046)|
 |T1053-005|[Scheduled Tasks](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1053-005)|
@@ -23,10 +23,15 @@ This is a project in development and new techniques are developed every day. In 
 |T1059-005|[Visual Basic Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-005)|
 |T1059-007|[Javascript/JScript](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-007)|
 |T1087-000|[Account Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1087-000)|
-|T1110.003|[Brute Force](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1110-003)|
+|T1110-003|[Brute Force](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1110-003)|
 |T1543-003|[Create or Modify System Process: Windows Service](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1543-003)|
 |T1547-001|[Registry Run Keys / Startup Folder](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1547-001)|
+|T1219|[Account Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1087-000)|
+|T1036-004|[Masquerading: Masquerade Task or Service](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
+|T1027|[Obfuscated Files or Information](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1027)|
+|T1036-004|[RDP](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
 
+\*Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any technique.
 
 ## Usage
 
