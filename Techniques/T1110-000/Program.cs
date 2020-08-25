@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 class Technique {
 
 	/*
-		T1110.003 - Password Spraying
+		T1110.000 - Brute Force
 		
 		Local - LogonUser from Win32API
 			-> https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-logonusera
@@ -44,11 +44,11 @@ class Technique {
 					var check = authenticateUser(user, password, domain);
 					if (check)
 						results[user] = password;
-					Console.WriteLine("[T1110.003] {0} - {1} => Result: {2}", user, password, check ? "Success" : "Invalid");
+					Console.WriteLine("[T1110.000] {0} - {1} => Result: {2}", user, password, check ? "Success" : "Invalid");
 				}
 			}
 		} catch (Exception ex) {
-			Console.WriteLine("[T1110.003] Error ({0})", ex);
+			Console.WriteLine("[T1110.000] Error ({0})", ex);
 		}
 
 		return results;
@@ -96,28 +96,28 @@ class Technique {
 					if (domain != "") {
 						results = testUsers(usersFilename, passwordsFilename, domain);
 					} else {
-						Console.WriteLine("[T1110.003] Must inform domain if using it as type");
+						Console.WriteLine("[T1110.000] Must inform domain if using it as type");
 					}
 					break;
 
 			}
 
 			if (results.Count > 0) {
-				Console.WriteLine("[T1110.003] Success! Found a total of {0} valid {1} accounts: " , results.Count, type);
+				Console.WriteLine("[T1110.000] Success! Found a total of {0} valid {1} accounts: " , results.Count, type);
 				foreach(var account in results) {
-					Console.WriteLine("[T1110.003] {0} ", account);
+					Console.WriteLine("[T1110.000] {0} ", account);
 				}
 			} else {
-				Console.WriteLine("[T1110.003] No lucky, found 0 accounts! ");
+				Console.WriteLine("[T1110.000] No lucky, found 0 accounts! ");
 			}
 
 			ExitData["returncode"] = "0";
 			ExitData["returnmessage"] = "Technique executed without errors";
 
-			Console.WriteLine("[T1110.003] Finished Execution!");
+			Console.WriteLine("[T1110.000] Finished Execution!");
 			
 		} catch (Exception ex) {
-			Console.WriteLine("[T1110.003] Something went wrong: {0}", ex);
+			Console.WriteLine("[T1110.000] Something went wrong: {0}", ex);
 		}
 		
 	}

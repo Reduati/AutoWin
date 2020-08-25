@@ -1,4 +1,4 @@
-# T1110.003 - Brute Force
+# T1110.000 - Brute Force
 
 ## Execution Methods
 
@@ -22,7 +22,7 @@ This example shows how to use this technique to do a domain brute forcing, as yo
 ```json
 
 {
-    "Technique": "T1110-003",
+    "Technique": "T1110-000",
     "Parameters": [
     	"domain",
         "users.txt",
@@ -39,7 +39,7 @@ As you would expect, you can achieve the same for local by just changing the fir
 ```json
 
 {
-    "Technique": "T1110-003",
+    "Technique": "T1110-000",
     "Parameters": [
     	"local",
         "users.txt",

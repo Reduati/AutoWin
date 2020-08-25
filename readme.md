@@ -23,7 +23,7 @@ This is a project in development and new techniques are developed every day. In 
 |T1059-005|[Visual Basic Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-005)|
 |T1059-007|[Javascript/JScript](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-007)|
 |T1087-000|[Account Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1087-000)|
-|T1110-003|[Brute Force](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1110-003)|
+|T1110-000|[Brute Force](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1110-000)|
 |T1543-003|[Create or Modify System Process: Windows Service](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1543-003)|
 |T1547-001|[Registry Run Keys / Startup Folder](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1547-001)|
 |T1219|[Account Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1087-000)|
@@ -59,7 +59,7 @@ Imagine that you want to create a scenario where the attacker enumates all local
            
         },
         "2": {
-            "Technique": "T1110-003",
+            "Technique": "T1110-000",
             "Parameters" : [
                 "local",
                 "users.txt",
