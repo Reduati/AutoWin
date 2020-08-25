@@ -1,14 +1,17 @@
 {
-	"Campaign": "Simulação APT 1337",
-	"Datetime": "2020-07-30 08:28:13",
-	"Techniques": {
-		"1": {
-			"Technique": "T1046",
-			"Parameters" : [
-				"192.168.15.1/32",
-				"80"
-			]
-			
-		}
-	}
+    "Campaign": "Example",
+    "Datetime": "2020-07-30 10:00",
+    "Techniques": {
+        "1": {
+            "Technique": "T1087-000",
+	    "EntryData" : {
+		"output":"users.txt"
+	    },
+            "Parameters" : [
+                "net",
+		"local"
+            ]
+           
+        }
+    }
 }
