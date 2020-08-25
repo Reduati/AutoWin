@@ -76,6 +76,7 @@ class Technique {
 
 		try {
 
+
 			// Give the user the ability to overwrite the default behaviour of using workfolder, instead uses full path if present with the filename
 			usersFilename = Path.GetDirectoryName(usersFilename).Length > 0 ? usersFilename : String.Format("{0}{1}", workfolder, usersFilename);
 			passwordsFilename = Path.GetDirectoryName(passwordsFilename).Length > 0 ? passwordsFilename : String.Format("{0}{1}", workfolder, passwordsFilename);
