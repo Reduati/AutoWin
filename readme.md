@@ -2,6 +2,7 @@
 
 Autowin is a framework that helps organizations simulate specific attack scenarios in order to improve detection and response capabilities.
 
+Check out [all the techniques](https://github.com/Reduati/AutoWin/tree/master/Techniques) we developed. Each one has a readme file, so you can understand better what they done and how to create a scenario.
 ## Build
 
 Right now we are not releasing a builded version of this project, but you can easily build it yourself using Visual Studio.
