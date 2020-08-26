@@ -9,7 +9,7 @@ using System.Text;
 namespace AutoWin {
     class Executer {
 
-		public static bool Start(Program.AttackFlowTechnique techniqueData) {
+		public static bool Start(string campaignName, string campaignDatetime, Program.AttackFlowTechnique techniqueData) {
 
 			string technique = techniqueData.Technique;
 			try {
@@ -68,6 +68,7 @@ namespace AutoWin {
 						Utils.echo("[DEBUG] Return Code:" + returnCode + " Return Message:" + returnMessage);
 					}
 				} catch (Exception ex) {
+					Program.logger.Trace("QWEQWEQE");
 					Console.WriteLine("[ERROR] " + ex.Message);
 				}
 

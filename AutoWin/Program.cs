@@ -10,6 +10,7 @@ namespace AutoWin {
 
         public static string project_path = AppDomain.CurrentDomain.BaseDirectory + @"lib\";
         public static Dictionary<string, string> EntryData = new Dictionary<string, string>();
+        public static SimpleLogger logger = new SimpleLogger();
 
         public class AttackFlowTechnique {
             public string Technique { get; set; }
@@ -25,8 +26,7 @@ namespace AutoWin {
 
         public static void readConfigFlags(string[] args) {
 
-            for(int k=1;k<=args.Length-1;k++) {
-
+            for (int k=1;k<=args.Length-1;k++) {
                 switch (args[k]) {
                     case "--lib":
                         Program.project_path = new Uri(args[k + 1]).LocalPath;
@@ -34,9 +34,24 @@ namespace AutoWin {
                     case "--workfolder":
                         EntryData["Workfolder"] = new Uri(args[k + 1]).LocalPath;
                         break;
+                    case "-v":
+                        Console.WriteLine("Setting verbose to 2.");
+                        logger.SetVerboseLevel(2);
+                        break;
+                    case "--verbose":
+                        Console.WriteLine("Setting verbose to 2.");
+                        logger.SetVerboseLevel(2);
+                        break;
+                    case "-s":
+                        Console.WriteLine("Setting verbose to 0.");
+                        logger.SetVerboseLevel(0);
+                        break;
+                    case "--succinct":
+                        Console.WriteLine("Setting verbose to 0.");
+                        logger.SetVerboseLevel(0);
+                        break;
                 }
             }
-            
 		}
 
         static void Main(string[] args) {
@@ -50,9 +65,11 @@ namespace AutoWin {
             int ExecutionMethod;
             //stores the path to the attack flow file supplied by execution argument on execution method 1 - attack flow.
             string AttackFlowPath = "";
-   
+
             //dealing with arguments
-            if (args.Length == 0) {
+            logger.Info("Started parsing and dealing with arguments.");
+            if (args.Length == 0)
+            {
                 Utils.echo("No argument was received. See --help for instructions.","alert");
                 return;
             } else {
@@ -84,16 +101,21 @@ namespace AutoWin {
                 readConfigFlags(args);
 
             }
+            logger.Info("Done parsing and dealing with arguments.");
 
-            switch (ExecutionMethod) {
+            logger.Info("Defining execution method.");
+            switch (ExecutionMethod)
+            {
                 //Execution Method 0 - Full
                 case 1:
+                    logger.Info("Full execution method selected, initiating.");
                     //executor("Full", "2020-07-30 08:28:13", tech.Method, tech.Parameters)
                     break;
                 //Execution Method 1 - Attack Flow
                 case 2:
-
+                    logger.Info("Attack flow execution method selected, initiating.");
                     Utils.echo("Starting executing using flow","title");
+                    
                     if (AttackFlow.Start(AttackFlowPath)) {
                         Utils.echo("Finished executing Attack flow!", "success");
                     }
@@ -101,11 +123,10 @@ namespace AutoWin {
                     break;
                 //Execution Method 2 - Debug
                 case 3:
+                    logger.Info("Debug execution method selected, initiating.");
                     //executor('1')
                     break;
             }
-        
-    
         }
     }
 }

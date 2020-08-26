@@ -38,7 +38,7 @@ namespace AutoWin {
                         }
 						
                         Utils.echo("Trying to run technique: " + tech.Technique);
-                        Executer.Start(tech);
+                        Executer.Start(ParsedAttackFlowTechniques.Campaign, ParsedAttackFlowTechniques.Datetime, tech);
                     }
 
                     return true;

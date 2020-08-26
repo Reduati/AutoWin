@@ -1,16 +1,18 @@
 # Aut0.W1n
 
+Autowin is a framework that helps organizations simulate custom attack scenarios in order to improve detection and response capabilities.
 
-Autowin is a framework that helps organizations simulate specific attack scenarios in order to improve detection and response capabilities.
+Check out [all the techniques](https://github.com/Reduati/AutoWin/tree/master/Techniques) we developed. Each one has a readme.md file, so you can better understand what they do and how to create a custom scenario.
 
-Check out [all the techniques](https://github.com/Reduati/AutoWin/tree/master/Techniques) we developed. Each one has a readme file, so you can understand better what they done and how to create a scenario.
+Autowin's entire architechture is based around [Mitre ATT&CK Framework](https://attack.mitre.org/) to facilitate not only the creation of the modules, but also the communication between those who test and those who get tested.
+
 ## Build
 
-Right now we are not releasing a builded version of this project, but you can easily build it yourself using Visual Studio.
+Right now we are not releasing a built version of this project, but you can easily build it yourself using Visual Studio.
 
 ## Techniques
 
-This is a project in development and new techniques are developed every day. In this moment, you can use those bellow:
+This is a project in development and new techniques are developed every day. Currently available techniques:
 
 | MID | Technique |
 | ----|----|
@@ -31,32 +33,37 @@ This is a project in development and new techniques are developed every day. In 
 |T1027|[Obfuscated Files or Information](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1027)|
 |T1036-004|[RDP](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
 
-\*Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any technique.
+[!] Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any technique.
 
 ## Usage
 
-You can use the "flow" option to execute techniques that are part of an specific scenario.
+Autowin currently supports three execution methods:
+
+### Full
+
+TO DO
+
+### Flow
+You can use the "flow" method to execute techniques that are part of an specific scenario.
 
 ```bash
 AutoWin.exe --flow attack_scenario.flow
 ```
-Imagine that you want to create a scenario where the attacker enumates all local users (T1087-000) and tries to brute force (T1110-003), you could achieve this by creating the following flow:
-
+Imagine that you want to create a scenario where the attacker enumerates all local users (T1087-000) and tries to brute force their password (T1110-000), you could achieve this by creating the following attack flow:
 ```json
 {
     "Campaign": "Brute Force or Password Spray local Users",
-    "Datetime": "2020-07-30 10:00:--",
+    "Datetime": "2020-07-30 10:00:00",
     "Techniques": {
         "1": {
             "Technique": "T1087-000",
-	    "EntryData" : {
-		"output":"users.txt"
-	    },
+            "EntryData" : {
+                "output":"users.txt"
+            },
             "Parameters" : [
                 "net",
-		        "local"
+                "local"
             ]
-           
         },
         "2": {
             "Technique": "T1110-000",
@@ -65,33 +72,31 @@ Imagine that you want to create a scenario where the attacker enumates all local
                 "users.txt",
                 "password.txt"
             ]
-           
         }
     }
 }
-
 ```
-
 For this example, you must provide a password.txt file contaning the passwords that will be tested against the users. 
 
-In the moment, the framework uses as default location the public folder (c:\users\public). All techniques will use this path, so you don't have to worry about it. In an case, you can change it by adding the variable "Workfolder"
- inside the attack flow:
-
+The framework currently uses the public folder (C:\Users\Public) as it's default artifact/resource dropping location. Techniques use that path automatically whenever possible, so you don't have to worry about it. If your simulation requires a specific directory, you can pass the "Workfolder" parameter in your attack flow file, before declaring your techniques:
 ```json
 {
     "Campaign": "Just an example",
-    "Datetime": "2020-07-30 10:00:--",
-    "Workfolder": "c:\\temp\\",
+    "Datetime": "2020-07-30 10:00:00",
+    "Workfolder": "C:\\temp\\",
     "Techniques": {
      ...
 ```
-
 You can also change the path inside the technique scope, as showed in the previous scenario by the variable "output".
+
+### Debug
+
+TO DO
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+Please make sure to update tests as necessary.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
