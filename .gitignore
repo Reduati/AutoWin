@@ -8,6 +8,7 @@
 *.sln.docstates
 *.vs
 *.hashtable
+*.log
 
 # Build results
 
