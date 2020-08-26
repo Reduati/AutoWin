@@ -15,7 +15,7 @@ Right now we are not releasing a built version of this project, but you can easi
 This is a project in development and new techniques are developed every day. Currently available techniques:
 
 | MID | Technique |
-| ----|----|
+| ---|----|
 |T1003-001|[OS Credential Dumping: LSASS Memory](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1003-001)|
 |T1037-001|[Boot or Logon Initialization Scripts: Logon Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1037-001)|
 |T1046|[Network Service Scanning](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1046)|
