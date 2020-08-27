@@ -1,15 +1,31 @@
 {
-    "Campaign": "Simulação APT 1337",
-    "Datetime": "2020-07-30 08:28:13",
+    "Campaign": "Scenario 3 - JS, CMD, Service and LSASS",
+    "Datetime": "2020-07-30 10:00:00",
     "Techniques": {
         "1": {
-            "EntryData": {
-                "output":"TextContent.txt"
-            },
-            "Technique": "T1087-000",
+		    "Technique": "T1059-007",
+		    "Parameters": [
+			    "script",
+			    "/e:JScript C:\\Users\\Public\\windows.txt"
+		    ]
+		},
+        "2": {
+            "Technique": "T1059-003",
             "Parameters": [
-                "net",
-                "local"
+                "copy C:\\WINDOWS\\System32\\cmd.exe C:\\Users\\Public\\bkp.exe"
+            ]
+        },
+        "3": {
+            "Technique": "T1543-003",
+            "Parameters": [
+                "\\Users\\Public\\bkp.exe",
+                "Microsoft Backup Manager"
+            ]
+        },
+        "4": {
+            "Technique": "T1003-001",
+            "Parameters": [
+                "C:\\Users\\Public\\"
             ]
         }
     }

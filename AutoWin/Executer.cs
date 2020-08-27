@@ -11,6 +11,7 @@ namespace AutoWin {
 
 		public static bool Start(string campaignName, string campaignDatetime, Program.AttackFlowTechnique techniqueData) {
 
+			Program.logger.Trace("Validating the parameters received on execution module for technique " + techniqueData.Technique + " and preparing for injection.");
 			string technique = techniqueData.Technique;
 			try {
 
@@ -27,26 +28,25 @@ namespace AutoWin {
 						var bytes_f = File.ReadAllText(technique_module_path);
 						bytes = Convert.FromBase64String(bytes_f);
 					}
-
+					Program.logger.Info("Injecting technique " + technique + ".");
 					if (Inject(bytes, techniqueData.Parameters)) {
 						return true;
 					}
 
 				} else {
-					Utils.echo("Cand find technique binary or module for " + technique, "alert");
+					Program.logger.Error("Cand find technique binary or module for " + technique + ".");
+					Utils.echo("Cand find technique binary or module for " + technique + ".", "alert");
 				}
 			} catch (Exception ex) {
-				Utils.echo("Error during executer start: " + ex.Message,"alert");
+				Program.logger.Error("Error during executer start: " + ex.Message + ".");
+				Utils.echo("Error during executer start: " + ex.Message + ".", "alert");
 			}
 			
 			return false;
         }
 
 		public static bool Inject(byte[] bytes, string[] techniqueParams) {
-
-			
 			try {
-
 				string returnMessage = null;
 				string returnCode = null;
 
@@ -67,15 +67,17 @@ namespace AutoWin {
 
 						Utils.echo("[DEBUG] Return Code:" + returnCode + " Return Message:" + returnMessage);
 					}
-				} catch (Exception ex) {
-					Program.logger.Trace("QWEQWEQE");
+				}
+				catch (Exception ex) {
 					Console.WriteLine("[ERROR] " + ex.Message);
 				}
-
+				
+				Program.logger.Info("Executed technique with success.");
 				return true;
 			} catch (Exception ex) {
+				Program.logger.Error("Could not execute technique.");
+
 				Utils.echo( String.Format("Error injecting code ({0})", Utils.readError(ex.Message)), "alert");
-				
 			}
 			return false;
 		}

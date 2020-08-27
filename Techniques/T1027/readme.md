@@ -20,7 +20,7 @@ Dropping software packed file with default parameters:
 
 ```json
 {
-    "Technique": "T1036-004",
+    "Technique": "T1027",
     "Parameters": [
 	    "Packing"
     ]

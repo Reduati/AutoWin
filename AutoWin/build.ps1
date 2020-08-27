@@ -46,7 +46,7 @@ function Compile-Project {
             $stdout = $p.StandardOutput.ReadToEnd()
             $stderr = $p.StandardError.ReadToEnd()
             if($p.ExitCode -eq 0) {
-                write-host "[!] MSBUILD compiled {$slnfile} without any errors!"
+                write-host "[!] DEVENV compiled {$slnfile} without any errors!"
                 return $true
             } else {
                  Write-Host "stdout: $stdout"

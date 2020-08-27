@@ -34,7 +34,7 @@ This is a project in development and new techniques are developed every day. Cur
 |T1027|[Obfuscated Files or Information](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1027)|
 |T1036-004|[RDP](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
 
-[!] Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any technique.
+[!] Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any subtechnique.
 
 ## Usage
 

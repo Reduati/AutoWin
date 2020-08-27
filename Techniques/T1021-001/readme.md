@@ -1,4 +1,4 @@
-# T1036-004 - RDP
+# T1021-001 - RDP
 
 ## Execution Methods
 
@@ -30,7 +30,7 @@ Log on to 192.168.0.1 using Bob's credentials to authenticate locally and execut
 
 ```json
 {
-    "Technique": "T1036-004",
+    "Technique": "T1021-001",
     "Parameters": [
 	    "192.168.0.1",
 	    "Bob",

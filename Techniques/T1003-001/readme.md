@@ -17,7 +17,7 @@
 {
     "Technique": "T1003-001",
     "Parameters": [
-    	"c:\\users\\public\\",
+    	"c:\\users\\public\\"
     ]
 }
 
@@ -32,7 +32,7 @@ Without any parameter or with invalid path, windows TEMP folder will be used:
 {
     "Technique": "T1003-001",
     "Parameters": [
-    	"",
+    	""
     ]
 }
 

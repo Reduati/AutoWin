@@ -28,12 +28,6 @@ namespace AutoWin {
 
             for (int k=1;k<=args.Length-1;k++) {
                 switch (args[k]) {
-                    case "--lib":
-                        Program.project_path = new Uri(args[k + 1]).LocalPath;
-                        break;
-                    case "--workfolder":
-                        EntryData["Workfolder"] = new Uri(args[k + 1]).LocalPath;
-                        break;
                     case "-v":
                         Console.WriteLine("Setting verbose to 2.");
                         logger.SetVerboseLevel(2);
@@ -49,6 +43,12 @@ namespace AutoWin {
                     case "--succinct":
                         Console.WriteLine("Setting verbose to 0.");
                         logger.SetVerboseLevel(0);
+                        break;
+                    case "--lib":
+                        Program.project_path = new Uri(args[k + 1]).LocalPath;
+                        break;
+                    case "--workfolder":
+                        EntryData["Workfolder"] = new Uri(args[k + 1]).LocalPath;
                         break;
                 }
             }
@@ -72,6 +72,7 @@ namespace AutoWin {
                 Utils.echo("No argument was received. See --help for instructions.","alert");
                 return;
             } else {
+                readConfigFlags(args);
 
                 switch (args[0]) {
                     case "--full":
@@ -97,10 +98,8 @@ namespace AutoWin {
                         return;
                 }
 
-                readConfigFlags(args);
 
             }
-            logger.Info("Done parsing and dealing with arguments.");
 
             logger.Info("Defining execution method.");
             switch (ExecutionMethod)

@@ -9,7 +9,7 @@
         Path to the desired service script/executable. i.e. \Users\Public\bkp.exe
            
     2 - displayName - Optional
-        displayName of the service beign created. Defaults to Microsoft Automatic Backup Service.
+        displayName of the service beign created. Defaults to "Microsoft Automatic Backup Service".
 
 # Examples
 
@@ -20,7 +20,7 @@ Creates a service named "Microsoft Automatic Backup Service" pointing to the "\U
     "Technique": "T1036-004",
     "Parameters": [
         "\\Users\\Public\\bkp.exe",
-        "Microsoft Backup Manager"
+        "Microsoft Automatic Backup Service"
     ]
 }
 ```

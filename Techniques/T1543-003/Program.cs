@@ -34,7 +34,7 @@ class Technique
 
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = executable;
-            startInfo.Arguments = "create " + uuid + " binpath='" + parameters + "'";
+            startInfo.Arguments = "create \"" + uuid + "\" start= auto binpath= \"" + parameters + "\"";
             startInfo.RedirectStandardOutput = true;
             startInfo.UseShellExecute = false;
 
