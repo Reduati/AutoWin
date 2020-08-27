@@ -67,7 +67,6 @@ namespace AutoWin {
             string AttackFlowPath = "";
 
             //dealing with arguments
-            logger.Info("Started parsing and dealing with arguments.");
             if (args.Length == 0)
             {
                 Utils.echo("No argument was received. See --help for instructions.","alert");
@@ -94,7 +93,7 @@ namespace AutoWin {
                         Utils.echo("./executavel.exe [--full, --flow path_to_flow_file, --debug]\n\n--full\n    Invokes all of the possible techniques without any sense of progression or intent of simulating a real attack. Useful for testing general detection and prevention capabilities.\n\n--flow path_to_flow_file\n    Requires a flow file defining techniques to be used in succession with the intent of simulating a real attack. Useful for adversary emulation exercises.\n\n--debug\n    General debugging mode, tests the dependencies, error handling and validity of the execution with a sample technique and/or a blank technique.", "alert");
                         return;
                     default:
-                        Utils.echo("No valid argument was received. See --help for instructions.","alert");
+                        Utils.echo("No valid execution method parameter was received. See --help for instructions.","alert");
                         return;
                 }
 

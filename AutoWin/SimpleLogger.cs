@@ -45,12 +45,12 @@ public class SimpleLogger
         datetimeFormat = "yyyy-MM-dd HH:mm:ss.fff";
         logFilename = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + FILE_EXT;
 
-        // Log file header line
-        string logHeader = logFilename + " is created.";
-        if (!System.IO.File.Exists(logFilename) && verboseLevel > 0)
-        {
-            WriteLine(System.DateTime.Now.ToString(datetimeFormat) + " " + logHeader, false);
-        }
+        //// Log file header line
+        //string logHeader = logFilename + " is created.";
+        //if (!System.IO.File.Exists(logFilename) && Program.logger.verboseLevel > 0)
+        //{
+        //    WriteLine(System.DateTime.Now.ToString(datetimeFormat) + " " + logHeader, false);
+        //}
     }
 
     /// <summary>
