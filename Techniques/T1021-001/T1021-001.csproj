@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F1DF1D0F-FF86-4106-97A8-F95AAF525C54}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Technique</RootNamespace>
+    <RootNamespace>T1021</RootNamespace>
     <AssemblyName>T1021-001</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
