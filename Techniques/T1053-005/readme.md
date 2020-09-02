@@ -1,4 +1,5 @@
 
+
 # T1053-005 - Scheduled Tasks
 
 ## Description
@@ -22,11 +23,7 @@
     - exec;
     - Task name;
     - Additional args (Optional).
-3. **PRIVILEGE ESCALATION** (Create and run as) 
-  - **EntryData** (Required) {
-    - username;
-    - password;
-    }
+3. **PRIVILEGE ESCALATION** (Create a task to run as system) 
   - Parameters
     - privesc;
     - Task name;
@@ -74,19 +71,15 @@
 
 - Privilege Escalation
 
-  Can create new scheduled task and run as a specific user::
+    You can create a new scheduled task and run as a specific user. If the current user is a local administrator, it will automatically be used as the owner of the task, otherwise, a window will be pop-up to enter valid credentials of an administrator user (It doesn't do UAC Bypass).
 
 ```json
 {
 "Technique": "T1053-005",
-"EntryData": {
-  "username":"UserAdmin",
-  "password":"Admin123"
-},
 "Parameters": [
   "privesc",
   "Privesc task test",
-  "C:\\Users\\Public\\programAsAdmin.exe",
+  "C:\\Users\\Public\\programAsSystem.exe",
   "minute"
   ]
 }
@@ -107,7 +100,7 @@
 ```
 <br>
 
-###### Additional args are always the last parameter and is optional 
+#### Additional args are always the last parameter and is optional 
 
 > Persistence sample with not required arguments
 
