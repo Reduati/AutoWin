@@ -24,7 +24,7 @@ class Technique {
             command += "' -Verb RunAs";
 
             Console.Write("[T1087-000] Enter a valid local admin, with your local hostname, e.g.: " + Environment.MachineName + "\\localAdminUsername | .\\localAdminUsername");
-            Console.Write("[T1087-000] Running instructions\nPS $> " + command);
+            Console.WriteLine("[T1087-000] Running instructions\nPS $> " + command);
             pipeline.Commands.AddScript(command);
             pipeline.Invoke();
             return true;
