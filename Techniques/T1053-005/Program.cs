@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using System.Management.Automation.Runspaces;
 using System.IO;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.Hosting;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Principal;
 
 
 class Technique {
@@ -30,7 +23,7 @@ class Technique {
             command = "Start-Process schtasks -ArgumentList '/create /tn \"" + args[1] + "\" /tr \"" + binToRun + "\" /sc " + args[3] + " /ru SYSTEM" + (args.Length >= 5 ? " " + args[4] : "");
             command += "' -Verb RunAs";
 
-            Console.Write("[T1087-000] Enter a valid local admin. Local hostname: " + Environment.MachineName + "\\localAdminUsername | .\\localAdminUsername");
+            Console.Write("[T1087-000] Enter a valid local admin, with your local hostname, e.g.: " + Environment.MachineName + "\\localAdminUsername | .\\localAdminUsername");
             Console.Write("[T1087-000] Running instructions\nPS $> " + command);
             pipeline.Commands.AddScript(command);
             pipeline.Invoke();
@@ -83,13 +76,12 @@ class Technique {
                     } else { Console.WriteLine("[T1053-005] Insert all required params to query a task. View README file and try again!"); return false; }
                 case "privesc":
                     if (args.Length >= 4) {
-                        usePowershellWithoutPowershell(args);
+                        return usePowershellWithoutPowershell(args);
                     } else {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n[!] To try scheduled a task with a privileged user, more parameters are needed in .flow file.\nIf you need help, go to the README and view examples [!]\n");
                         return false;
                     }
-                    break;
                 default:
                     Console.WriteLine("[ERROR] Method '" + args[0] + "' not found!");
                     Console.Write("[T1053-005] Try: persistence | exec | query | privesc\n\n");
