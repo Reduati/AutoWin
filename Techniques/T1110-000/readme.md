@@ -1,3 +1,4 @@
+
 # T1110.000 - Brute Force
 
 ## Execution Methods
@@ -14,6 +15,7 @@ The way you can use one or another can be checked in the examples.
 1. **Type** - local / domain
 2. **Users** - Path of your TXT file containing the users
 3. **Passwords** - Path of your TXT file containing the passwords
+4. **Domain Name** - Only required if the type is equal 'domain'. The 4th parameter must be the domain name
 
 ## Examples
 
@@ -26,7 +28,8 @@ This example shows how to use this technique to do a domain brute forcing, as yo
     "Parameters": [
     	"domain",
         "users.txt",
-        "password.txt"
+        "password.txt",
+        "domain.name"
     ]
 }
 

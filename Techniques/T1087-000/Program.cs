@@ -241,12 +241,16 @@ class Technique {
                             switch (args[2].ToLower()) {
                                 case "enabled":
                                     toDo += "Get-ADUser -Filter {Enabled -eq $true} | Select-Object SamAccountName";
+                                    //toDo += "Get-ADUser -Filter {Enabled -eq $true} | select-object @{name=\"Login\"; expression={(($_.DistinguishedName  -split '(DC=)')[2] -replace ',')+\"\\\"+$_.SamAccountName}}";
                                     break;
                                 case "all":
                                     toDo += "Get-ADUser -Filter * | Select-Object SamAccountName";
+                                    //toDo += "Get-ADUser -Filter * | select-object @{name=\"Login\"; expression={(($_.DistinguishedName  -split '(DC=)')[2] -replace ',')+\"\\\"+$_.SamAccountName}}";
                                     break;
                                 case "pergroup":
                                     if (args.Length > 3) {
+                                        //string domainName = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
+                                        //toDo += "Get-ADGroupMember -identity '" + args[3] + "' -Server " + domainName + " | select-object @{name=\"Login\"; expression={(($_.DistinguishedName  -split '(DC=)')[2] -replace ',') + \"\\\" + $_.SamAccountName}}";
                                         toDo += "Get-adgroupmember -identity '" + args[3] + "' | select samaccountname";
                                     } else {
                                         Console.WriteLine("[T1087-000] To enumerate users per group, enter the group name as the value in the 4th parameter.");
@@ -255,9 +259,11 @@ class Technique {
                                     break;
                                 case "pwdstats":
                                     toDo += "Get-ADUser -Filter * | ft Name, PasswordExpired, PasswordLastSet, PasswordNeverExpires";
+                                    //toDo += "Get-ADUser -Filter * | select-object @{name=\"Login\"; expression={(($_.DistinguishedName  -split '(DC=)')[2] -replace ',')+\"\\\"+$_.SamAccountName}},PasswordExpired, PasswordLastSet, PasswordNeverExpires";
                                     break;
                                 case "emailist":
                                     toDo += "Get-ADUser -Filter * -properties EmailAddress | ft SamAccountName, EmailAddress";
+                                    //toDo += "Get-ADUser -Filter * -properties EmailAddress | select-object @{name=\"Login\"; expression={(($_.DistinguishedName  -split '(DC=)')[2] -replace ',')+\"\\\"+$_.SamAccountName}}, EmailAddress";
                                     break;
                                 default:
                                     Console.ForegroundColor = ConsoleColor.Red;
