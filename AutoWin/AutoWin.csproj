@@ -87,6 +87,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -file "$(ProjectDir)build.ps1"</PreBuildEvent>
+    <PreBuildEvent>if exist $(ProjectDir)build-template.config ( move $(ProjectDir)build-template.config $(ProjectDir)build.ps1 ) 
+powershell.exe -ExecutionPolicy Unrestricted -file "$(ProjectDir)build.ps1"</PreBuildEvent>
   </PropertyGroup>
 </Project>
