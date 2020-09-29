@@ -57,7 +57,7 @@ class Technique
     public static void Main(string[] args)
     {
         Console.WriteLine("[T1558-003] Starting Execution!");
-		Console.WriteLine("[T1558-003] Kerberoasting " + args[0] + " domain with " + args[1] + " user.");
+		Console.WriteLine("[T1558-003] Kerberoasting " + args[0] + " domain.");
         if (execCommand(args)){
             Console.WriteLine("[T1558-003] Successfully executed Technique (return 0)! ");
         }
