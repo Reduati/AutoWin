@@ -16,7 +16,7 @@
 
 2. **Enforce SSP register** (The 'opsec' way)
   - Parameters
-    1. force  -> The same, but eliminating the need to restart the operating system (exec a powershell script in memory using the tech [T1059-001](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-001))
+    1. force  -> The same, but eliminates the need to restart the operating system (runs a PowerShell script in memory using the technique [T1059-001](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1059-001))
 
 
 ## Examples
