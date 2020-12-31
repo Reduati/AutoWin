@@ -16,7 +16,7 @@ Right now we are not releasing a built version of this project, but you can easi
 This is a project in development and new techniques are developed every day. Currently available techniques:
 
 | MID | Technique |
-| ----|----|
+|:----:|:----|
 |T1003-001|[OS Credential Dumping: LSASS Memory](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1003-001)|
 |T1037-001|[Boot or Logon Initialization Scripts: Logon Script](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1037-001)|
 |T1046|[Network Service Scanning](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1046)|
@@ -32,7 +32,12 @@ This is a project in development and new techniques are developed every day. Cur
 |T1219|[Remote Access Software](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1219)|
 |T1036-004|[Masquerading: Masquerade Task or Service](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
 |T1027|[Obfuscated Files or Information](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1027)|
-|T1036-004|[RDP](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1036-004)|
+|T1021-001|[RDP](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1021-001)|
+|T1135|[Network Share Discovery](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1135)|
+|T1547-005|[Boot or Logon Autostart Execution: Security Support Provider](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1547-005)|
+|T1550-003|[Use Alternate Authentication Material: Pass the Ticket](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1550-003)|
+|T1558-001|[Steal or Forge Kerberos Tickets: Golden Ticket](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1558-001)|
+|T1558-003|[Steal or Forge Kerberos Tickets: Kerberoasting ](https://github.com/Reduati/AutoWin/tree/master/Techniques/T1558-003)|
 
 [!] Techniques with the "000" suffix are modules that contains multiple subtechniques as execution methods. Modules without any sort of suffix are singular execution method techniques that do not contain any subtechnique.
 
