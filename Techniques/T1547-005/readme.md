@@ -3,7 +3,7 @@
 ## Description
 
   This module can set a backdoor in the lsass.exe process and get the credentials of all users who log in to the compromised machine. It also has a built-in script that forces SSP registration, eliminating the need to restart the operating system.
-  After execution, the module would create persistence in the environment through the Windows registry keys and after authenticating users, it will create a log file in path ´\Windows\System32\redttpok.log´.
+  After execution, the module would create persistence in the environment through the Windows registry keys and after authenticating users, it will create a log file in path ```\Windows\System32\redttpok.log```.
 
 
 ## Execution Methods
