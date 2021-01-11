@@ -37,7 +37,7 @@ class Technique {
 
     }
 
-    public static void storeDll(string[] args) {
+    public static void storeDll() {
         Console.WriteLine("[T1547-005] Setting path to store DLL");
         string systemPath = Environment.SystemDirectory + @"\";
 
@@ -84,7 +84,7 @@ class Technique {
     public static void Main(string[] args) {
         if (args.Length > 0) {
             // Decode and store the DLL file on the disk
-            storeDll(args);
+            storeDll();
             setKeyRegedit();
 
             if (args[0].ToLower() == "force") {
