@@ -100,7 +100,7 @@ class Technique {
             }
 
             Console.WriteLine("[T1547-005] All done! Enjoy your loot :D");
-            Console.WriteLine(@"[T1547-005] It will be saved in: C:\Windows\System32\redttpok.log\n");
+            Console.WriteLine(@"[T1547-005] It will be saved in: C:\Windows\System32\redttpok.log" + "\n");
         } else {
             Console.WriteLine("[T1547-005] Argument invalid. Check readme examples and try again!");
         }
