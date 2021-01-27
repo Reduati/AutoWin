@@ -65,8 +65,6 @@ class Technique
 	{
 		Console.WriteLine("[T1550-003] Starting Execution!");
 		Console.WriteLine("[T1550-003] Passing the ticket with the "+args[0]+" ticket file.");
-		//string[] arguments = {"ptt", "/ticket:"+args[0]};
-		//string[] arguments = {"asktgs", "/ticket:"+args[0], "/service:LDAP/***REMOVED***,cifs/***REMOVED***", "/ptt"};
 
 		if (execCommand(args)){
 			Console.WriteLine("[T1550-003] Successfully executed Technique (return 0)! ");
